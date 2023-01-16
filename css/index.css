@@ -1,0 +1,41 @@
+*{
+  box-sizing: border-box;
+}
+
+.userinput{
+  display: inline-block;
+  min-width: 100px;
+  padding: 5px 10px;
+  background: linear-gradient(to right, #3b84f8 0%, #6d99f7 50%, #3b84f8 100%);
+  margin: 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;  
+  border: none;
+}
+
+.userinput:hover{
+  background: linear-gradient(to right, #5292f8 0%, #82a5f1 50%, #74a5f4 100%);
+}
+
+#Block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PopupDIV__btns_container{
+  margin-top: 40px;
+}
+
+#PopupDIV {
+  text-align: center;
+  display: none;
+  width: 300px;
+  height: 300px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: antiquewhite;
+  z-index: 11;
+}

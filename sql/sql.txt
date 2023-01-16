@@ -1,0 +1,39 @@
+1. Написать SELECT, который покажет Записи в таблице Table1,
+ которых нет в Table2. Таблицы имеют связь по полю EntityID.
+
+SELECT t1.* FROM Table1 AS t1
+LEFT JOIN Table2 AS t2 ON t1.EntityID = t2.EntityID
+Where t2.EntityID IS null;
+
+------------------------------------------------------------------------
+
+2.таблица Table1 содержит данные по закупке позиций по заявкам.
+Структура:
+-RequestID – номер заявки
+-PositionID-Номер позиции
+-CatalogID-ссылка на каталог, которому принадлежит позиция.(ID каталога)
+-PositionQuantity-количество закупаемых позиций
+-PositionPrice- цена за 1 штуку
+Написать запрос (SELECT), который по заявке № 111 посчитает сумму закупки,
+по каждому каталогу.
+
+Структура ожидаемого ответа(2 колонки):
+-CatalogID
+-сумма закупки.
+
+SELECT `CatalogID`, SUM(PositionQuantity * PositionPrice) AS "сумма закупки" FROM `Table1` 
+WHERE RequestID=111 GROUP BY CatalogID;
+
+----------------------------------------------------------------------------------------
+
+3.Сделать доп. условие в задаче п.2 показать только те каталоги заявки №111,
+где сумма закупки по каталогу более 100 000. Условие – только 1 команда SELECT 
+и без использования вложенных SELECT.
+Структура ожидаемого ответа такая же как и в п.2 (2 колонки):
+-CatalogID
+-сумма закупки.
+
+SELECT `CatalogID`, SUM(PositionQuantity * PositionPrice) AS "сумма закупки" FROM `Table1` 
+WHERE RequestID=111
+GROUP BY CatalogID
+HAVING SUM(PositionQuantity * PositionPrice) > 100000;
